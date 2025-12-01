@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appu Driving School</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- Custom Tailwind Configuration for specific colors -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: '#0f172a',    /* Slate 900 - Navy Blue equivalent */
+                        brand: '#ea580c',   /* Orange 600 - Bright Orange/Red */
+                        brand_hover: '#c2410c',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
+
+    <!-- Flash Messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <div class="fixed top-5 left-1/2 transform -translate-x-1/2 z-50 w-full max-w-lg px-4">
+          {% for category, message in messages %}
+            <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 rounded shadow-lg flex justify-between items-center" role="alert">
+                <p>{{ message }}</p>
+                <span class="text-2xl cursor-pointer" onclick="this.parentElement.style.display='none';">&times;</span>
+            </div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+
+    <!-- 1. Header / Navigation -->
+    <nav class="bg-navy text-white shadow-md">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold tracking-wider flex items-center gap-2">
+                <i class="fas fa-car-side text-brand"></i> Appu Driving School
+            </a>
+            <div class="hidden md:flex space-x-8 text-sm uppercase tracking-wide font-semibold">
+                <a href="#services" class="hover:text-brand transition duration-300">Services</a>
+                <a href="#contact" class="hover:text-brand transition duration-300">Contact</a>
+            </div>
+            <!-- Mobile Menu Button (Visual Only for simplicity) -->
+            <button class="md:hidden text-2xl focus:outline-none">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- 2. Hero Section -->
+    <section class="relative bg-navy text-white py-24 lg:py-32 overflow-hidden">
+        <!-- Decorative Background Element -->
+        <div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
+            <i class="fas fa-road absolute -bottom-10 -right-10 text-9xl"></i>
+        </div>
+
+        <div class="container mx-auto px-6 text-center relative z-10">
+            <h1 class="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">
+                Drive Confidently. <br/>
+                <span class="text-brand">Learn Safely.</span>
+            </h1>
+            <p class="text-lg md:text-xl text-gray-300 mb-10 max-w-2xl mx-auto">
+                Join the highest-rated driving school in the Bengaluru. Certified instructors, modern vehicles, and a curriculum designed to keep you safe on the road.
+            </p>
+            
+            <!-- Call to Action Button -->
+            <a href="tel:+919876543210" class="inline-block bg-brand hover:bg-brand_hover text-white font-bold py-4 px-8 rounded-full shadow-lg transition transform hover:-translate-y-1 hover:shadow-xl text-lg animate-bounce">
+                <i class="fas fa-phone-alt mr-2"></i> Book Your First Lesson Now!
+            </a>
+            <p class="mt-4 text-sm text-gray-400">Call us at +91 97397 60248</p>
+        </div>
+    </section>
+
+    <!-- 3. Services Section -->
+    <section id="services" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-navy mb-4">Our Packages</h2>
+                <div class="w-20 h-1 bg-brand mx-auto rounded"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                
+                <!-- Service 1 -->
+                <div class="bg-gray-50 rounded-xl shadow-md p-8 hover:shadow-xl transition duration-300 border-t-4 border-brand">
+                    <div class="text-navy text-4xl mb-4">
+                        <i class="fas fa-id-card"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-navy mb-2">Beginner Package</h3>
+                    <p class="text-gray-600 mb-4">Perfect for first-time drivers. Includes 10 hours of behind-the-wheel training and classroom theory.</p>
+                    <p class="text-2xl font-bold text-brand">$350</p>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="bg-gray-50 rounded-xl shadow-md p-8 hover:shadow-xl transition duration-300 border-t-4 border-navy">
+                    <div class="text-navy text-4xl mb-4">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-navy mb-2">Advanced Refresher</h3>
+                    <p class="text-gray-600 mb-4">Haven't driven in a while? Get your confidence back with our intensive highway and city driving refresher.</p>
+                    <p class="text-2xl font-bold text-brand">$150</p>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="bg-gray-50 rounded-xl shadow-md p-8 hover:shadow-xl transition duration-300 border-t-4 border-brand">
+                    <div class="text-navy text-4xl mb-4">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-navy mb-2">Manual Transmission</h3>
+                    <p class="text-gray-600 mb-4">Master the stick shift. specialized training for manual transmission vehicles and clutch control.</p>
+                    <p class="text-2xl font-bold text-brand">$200</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Contact Form Section -->
+    <section id="contact" class="py-20 bg-gray-100">
+        <div class="container mx-auto px-6 max-w-4xl">
+            <div class="bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col md:flex-row">
+                
+                <!-- Info Column -->
+                <div class="bg-navy p-10 md:w-1/3 text-white flex flex-col justify-center">
+                    <h3 class="text-2xl font-bold mb-6">Get in Touch</h3>
+                    <p class="mb-4 text-gray-300">Ready to start your journey? Fill out the form or give us a call.</p>
+                    <div class="space-y-4">
+                        <p><i class="fas fa-phone mr-2 text-brand"></i> +91 97397 60248</p>
+                        <p><i class="fas fa-envelope mr-2 text-brand"></i> info@safedrive.com</p>
+                        <p><i class="fas fa-map-marker-alt mr-2 text-brand"></i> Jnana jyothi Nagar, Bengaluru</p>
+                    </div>
+                </div>
+
+                <!-- Form Column -->
+                <div class="p-10 md:w-2/3">
+                    <h3 class="text-2xl font-bold text-navy mb-6">Book an Appointment</h3>
+                    <form action="/submit_contact" method="POST" class="space-y-5">
+                        
+                        <div>
+                            <label for="full_name" class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+                            <input type="text" name="full_name" id="full_name" required 
+                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand focus:border-transparent outline-none transition">
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+                                <input type="email" name="email" id="email" required 
+                                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand focus:border-transparent outline-none transition">
+                            </div>
+                            <div>
+                                <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
+                                <input type="tel" name="phone" id="phone" required 
+                                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand focus:border-transparent outline-none transition">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="service" class="block text-sm font-medium text-gray-700 mb-1">Preferred Service</label>
+                            <select name="service" id="service" 
+                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand focus:border-transparent outline-none transition bg-white">
+                                <option value="Beginner Package">Beginner Package ($350)</option>
+                                <option value="Advanced Refresher">Advanced Refresher ($150)</option>
+                                <option value="Manual Transmission">Manual Transmission ($200)</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" 
+                            class="w-full bg-navy hover:bg-slate-800 text-white font-bold py-3 rounded-lg transition duration-300 shadow-md">
+                            Submit Request
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Footer -->
+    <footer class="bg-navy text-white py-8 border-t border-slate-800">
+        <div class="container mx-auto px-6 text-center">
+            <p class="text-gray-400 text-sm">
+                &copy; 2025 Appu Driving School. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+</body>
+</html>
